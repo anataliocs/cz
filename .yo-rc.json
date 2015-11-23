@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "canataliozappos",
+    "packageName": "com.zappos.canatalio",
+    "packageFolder": "com/zappos/canatalio",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": true,
+    "rememberMeKey": "23d0c3c74f34d9a4a93e7bf5310f356948709cbc"
+  }
+}
