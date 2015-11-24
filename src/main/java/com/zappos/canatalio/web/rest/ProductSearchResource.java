@@ -72,10 +72,13 @@ public class ProductSearchResource {
             currentProductCombo = new ArrayList<>();
             for(SearchResults sr : searchResultsList) {
                 currentProductCombo.add(category, sr.getProductSearchResultList().get(productListPosition));
-                if(totalCostOfCombo(currentProductCombo) <= totalPrice) {
-                    productCombos.addProductCombo(currentProductCombo);
-                }
                 category++;
+            }
+
+            if(totalCostOfCombo(currentProductCombo) <= totalPrice
+                && !isDuplicate(currentProductCombo, productCombos)) {
+                System.out.println("added " + currentProductCombo);
+                productCombos.addProductCombo(currentProductCombo);
             }
 
             productListPosition++;
@@ -86,6 +89,26 @@ public class ProductSearchResource {
 
     private Double totalCostOfCombo(List<ProductSearchResult> combo) {
         return combo.stream().mapToDouble(ProductSearchResult::getPriceAsDouble).sum();
+    }
+
+    private boolean isDuplicate(List<ProductSearchResult> psrList, ProductCombos pc) {
+
+        if(pc.getProductCombosList().isEmpty())
+            return false;
+
+        for(List<ProductSearchResult> psrAddedList : pc.getProductCombosList()) {
+
+            int psrAddedListPointer = 0;
+            for(ProductSearchResult psr : psrList) {
+                System.out.println("id1 " + psr.getProductId() + "id2 " + psrAddedList.get(psrAddedListPointer).getProductId());
+                if(!psr.getProductId().equals(psrAddedList.get(psrAddedListPointer).getProductId())) {
+                    return false;
+                }
+                psrAddedListPointer++;
+            }
+        }
+
+        return true;
     }
 
 }
