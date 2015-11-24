@@ -44,7 +44,7 @@ public class ProductSearchResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ProductCombos findAll(
         @RequestParam(value = "searchTerm", defaultValue = "boots", required = true)String searchTerm,
-        @RequestParam(value = "totalPrice", defaultValue = "1000", required = true)Integer totalPrice,
+        @RequestParam(value = "totalPrice", defaultValue = "1000", required = true)Double totalPrice,
         @RequestParam(value = "numOfItems", defaultValue = "3", required = true)Integer numOfItems) {
 
         System.out.println("totalPrice " +totalPrice );
@@ -65,16 +65,27 @@ public class ProductSearchResource {
         }
 
 
-        searchResultsList.stream()
-            .forEach(sr -> {
-                    System.out.println("--row ");
-                    currentProductCombo.add(sr.getProductSearchResultList().get(0));
-                }
-            );
+        int productListPosition = 0;
+        while(totalCostOfCombo(currentProductCombo) <= totalPrice && productListPosition < searchResultsList.size() ) {
 
-        productCombos.addProductCombo(currentProductCombo);
+            int category = 0;
+            currentProductCombo = new ArrayList<>();
+            for(SearchResults sr : searchResultsList) {
+                currentProductCombo.add(category, sr.getProductSearchResultList().get(productListPosition));
+                if(totalCostOfCombo(currentProductCombo) <= totalPrice) {
+                    productCombos.addProductCombo(currentProductCombo);
+                }
+                category++;
+            }
+
+            productListPosition++;
+        }
 
         return productCombos;
+    }
+
+    private Double totalCostOfCombo(List<ProductSearchResult> combo) {
+        return combo.stream().mapToDouble(ProductSearchResult::getPriceAsDouble).sum();
     }
 
 }

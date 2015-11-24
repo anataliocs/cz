@@ -42,4 +42,5 @@ public class ProductCombos {
         productCombosList.add(combo);
         totalPriceList.add(combo.stream().mapToDouble(ProductSearchResult::getPriceAsDouble).sum());
     }
+
 }
