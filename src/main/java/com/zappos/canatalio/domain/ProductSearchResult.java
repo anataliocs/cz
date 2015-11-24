@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Created by canatalio on 11/23/15.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductSearchResult {
+public class ProductSearchResult implements Comparable<ProductSearchResult> {
 
     String brandName;
     String thumbnailImageUrl;
@@ -97,5 +97,20 @@ public class ProductSearchResult {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    @Override
+    public int compareTo(ProductSearchResult o) {
+        String thisPrice = this.price.substring(1);
+        Double thisPriceVal = Double.parseDouble(thisPrice);
+        String comparedPrice = o.price.substring(1);
+        Double comparedPriceVal = Double.parseDouble(comparedPrice);
+
+        if(thisPriceVal > comparedPriceVal)
+            return 1;
+        else
+            return -1;
+
+
     }
 }

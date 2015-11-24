@@ -20,7 +20,7 @@ public class ProductSearchServiceImpl implements ProductSearchService {
 
     @Override
     public SearchResults getProductsBySearchTerm(String searchTerm) {
-        SearchResults searchResults = restTemplate.getForObject("http://api.zappos.com/Search?term=boots&key=b05dcd698e5ca2eab4a0cd1eee4117e7db2a10c4", SearchResults.class);
+        SearchResults searchResults = restTemplate.getForObject("http://api.zappos.com/Search?term=" + searchTerm + "&key=b05dcd698e5ca2eab4a0cd1eee4117e7db2a10c4", SearchResults.class);
         log.info(searchResults.toString());
 
         return searchResults;
