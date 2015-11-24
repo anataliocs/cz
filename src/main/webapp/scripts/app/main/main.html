@@ -114,11 +114,11 @@
                                              data-ride="carousel">
                                             <!-- Wrapper for slides -->
                                             <div class="carousel-inner">
-                                                <div class="item active">
+                                                <div ng-repeat="productCombo in productSearchResultsList" class="item active">
                                                     <div class="row">
 
                                                         <div class="col-sm-4"
-                                                             ng-repeat="item in productSearchResultsList">
+                                                             ng-repeat="item in productCombo">
                                                             item {{item.productId}}
                                                             <div class="col-item">
                                                                 <div class="photo">
@@ -152,89 +152,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <div class="col-item">
-                                                                <div class="photo">
-                                                                    <img src="http://placehold.it/350x260"
-                                                                         class="img-responsive"
-                                                                         alt="a"/>
-                                                                </div>
-                                                                <div class="info">
-                                                                    <div class="row">
-                                                                        <div class="price col-md-6">
-                                                                            <h5>
-                                                                                Product with Variants</h5>
-                                                                            <h5 class="price-text-color">
-                                                                                $199.99</h5>
-                                                                        </div>
-                                                                        <div class="rating hidden-sm col-md-6">
-                                                                            <i class="price-text-color fa fa-star"></i><i
-                                                                            class="price-text-color fa fa-star">
-                                                                        </i><i
-                                                                            class="price-text-color fa fa-star"></i><i
-                                                                            class="price-text-color fa fa-star">
-                                                                        </i><i class="fa fa-star"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="col-item">
-                                                                <div class="photo">
-                                                                    <img src="http://placehold.it/350x260"
-                                                                         class="img-responsive"
-                                                                         alt="a"/>
-                                                                </div>
-                                                                <div class="info">
-                                                                    <div class="row">
-                                                                        <div class="price col-md-6">
-                                                                            <h5>
-                                                                                Grouped Product</h5>
-                                                                            <h5 class="price-text-color">
-                                                                                $249.99</h5>
-                                                                        </div>
-                                                                        <div class="rating hidden-sm col-md-6">
-                                                                        </div>
-                                                                    </div>
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="col-item">
-                                                                <div class="photo">
-                                                                    <img src="http://placehold.it/350x260"
-                                                                         class="img-responsive"
-                                                                         alt="a"/>
-                                                                </div>
-                                                                <div class="info">
-                                                                    <div class="row">
-                                                                        <div class="price col-md-6">
-                                                                            <h5>
-                                                                                Product with Variants</h5>
-                                                                            <h5 class="price-text-color">
-                                                                                $149.99</h5>
-                                                                        </div>
-                                                                        <div class="rating hidden-sm col-md-6">
-                                                                            <i class="price-text-color fa fa-star"></i><i
-                                                                            class="price-text-color fa fa-star">
-                                                                        </i><i
-                                                                            class="price-text-color fa fa-star"></i><i
-                                                                            class="price-text-color fa fa-star">
-                                                                        </i><i class="fa fa-star"></i>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="clearfix">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

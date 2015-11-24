@@ -1,5 +1,6 @@
 package com.zappos.canatalio.web.rest;
 
+import com.zappos.canatalio.domain.ProductCombos;
 import com.zappos.canatalio.domain.ProductSearchResult;
 import com.zappos.canatalio.domain.SearchResults;
 import com.zappos.canatalio.security.AuthoritiesConstants;
@@ -41,7 +42,7 @@ public class ProductSearchResource {
     @RequestMapping(value = "/products",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<List<ProductSearchResult>> findAll(
+    public ProductCombos findAll(
         @RequestParam(value = "searchTerm", defaultValue = "boots", required = true)String searchTerm,
         @RequestParam(value = "totalPrice", defaultValue = "1000", required = true)Integer totalPrice,
         @RequestParam(value = "numOfItems", defaultValue = "3", required = true)Integer numOfItems) {
@@ -49,9 +50,8 @@ public class ProductSearchResource {
         System.out.println("totalPrice " +totalPrice );
         System.out.println("numOfItems " + numOfItems);
 
-        List<List<ProductSearchResult>> productCombos = new ArrayList<>();
+        ProductCombos productCombos = new ProductCombos();
         List<ProductSearchResult> currentProductCombo = new ArrayList<>();
-
 
         List<SearchResults> searchResultsList = new ArrayList<SearchResults>();
 
@@ -72,7 +72,7 @@ public class ProductSearchResource {
                 }
             );
 
-        productCombos.add(currentProductCombo);
+        productCombos.addProductCombo(currentProductCombo);
 
         return productCombos;
     }

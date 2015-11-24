@@ -2,6 +2,8 @@ package com.zappos.canatalio.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 /**
  * Created by canatalio on 11/23/15.
  */
@@ -70,6 +72,12 @@ public class ProductSearchResult implements Comparable<ProductSearchResult> {
     public String getPrice() {
         return price;
     }
+
+    public Double getPriceAsDouble() {
+        String thisPrice = this.price.substring(1);
+        return Double.parseDouble(thisPrice);
+    }
+
 
     public void setPrice(String price) {
         this.price = price;

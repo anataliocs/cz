@@ -24,9 +24,12 @@ angular.module('canataliozapposApp')
                 headers: {}
             }).success(function(data){
                 console.log(data);
-                $scope.productSearchResultsList = data[0];
+                $scope.productSearchResultsList = data.productCombosList;
+                $scope.productSearchResultsTotalPriceList = data.totalPriceList;
 
-                console.log("results " + data[0]);
+                console.log("results " + $scope.productSearchResultsList[0].productId);
+                console.log("totals " + $scope.productSearchResultsTotalPriceList);
+
                 $scope.productSearchResultsLoading = false;
             }).error(function(){
                 console.log("Error get products by term.");
