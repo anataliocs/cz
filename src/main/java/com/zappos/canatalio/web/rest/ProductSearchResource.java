@@ -84,6 +84,9 @@ public class ProductSearchResource {
             productListPosition++;
         }
 
+        Collections.reverse(productCombos.getProductCombosList());
+        Collections.reverse(productCombos.getTotalPriceList());
+
         return productCombos;
     }
 
