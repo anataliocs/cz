@@ -112,9 +112,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                                <div ng-repeat="productCombo in productSearchResultsList"
+                                                <div ng-repeat="productCombo in productSearchResultsList track by $index"
                                                      class="">
                                                     <div class="well">
+
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-center center-block">
+                                                                <h4>Product Combo: {{$index+1}}</h4>
+                                                                <h3><span class="label label-success">Total: ${{productSearchResultsTotalPriceList[$index]}}</span></h3>
+                                                                <br/>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="row">
 
                                                             <div class="col-sm-4"
@@ -134,14 +143,7 @@
                                                                                 <h5 class="price-text-color">
                                                                                     {{item.price}}</h5>
                                                                             </div>
-                                                                            <div class="rating hidden-sm col-md-6">
-                                                                                <i class="price-text-color fa fa-star"></i><i
-                                                                                class="price-text-color fa fa-star">
-                                                                            </i><i
-                                                                                class="price-text-color fa fa-star"></i><i
-                                                                                class="price-text-color fa fa-star">
-                                                                            </i><i class="fa fa-star"></i>
-                                                                            </div>
+
                                                                         </div>
 
                                                                         <div class="clearfix">

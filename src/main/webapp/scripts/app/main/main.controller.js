@@ -37,5 +37,9 @@ angular.module('canataliozapposApp')
             });
         };
 
+        $scope.getTotalPriceForCombo = function() {
+
+        };
+
         });
     });
