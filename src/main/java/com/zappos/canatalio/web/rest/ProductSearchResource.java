@@ -41,7 +41,7 @@ public class ProductSearchResource {
     @RequestMapping(value = "/products",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public SearchResults findAll(
+    public List<List<ProductSearchResult>> findAll(
         @RequestParam(value = "searchTerm", defaultValue = "boots", required = true)String searchTerm,
         @RequestParam(value = "totalPrice", defaultValue = "1000", required = true)Integer totalPrice,
         @RequestParam(value = "numOfItems", defaultValue = "3", required = true)Integer numOfItems) {
@@ -49,10 +49,14 @@ public class ProductSearchResource {
         System.out.println("totalPrice " +totalPrice );
         System.out.println("numOfItems " + numOfItems);
 
+        List<List<ProductSearchResult>> productCombos = new ArrayList<>();
+        List<ProductSearchResult> currentProductCombo = new ArrayList<>();
+
+
         List<SearchResults> searchResultsList = new ArrayList<SearchResults>();
 
         //Cache products array with one item type per rows and one row per numOfItems
-        for(int i = 0; i <= numOfItems; i++) {
+        for(int i = 0; i < numOfItems; i++) {
             SearchResults searchResults = productSearchService.getProductsBySearchTerm(searchTerms.get(i));
 
             //Sort from lowest price to highest price using product search results compareTo Method
@@ -60,18 +64,17 @@ public class ProductSearchResource {
             searchResultsList.add(searchResults);
         }
 
+
         searchResultsList.stream()
             .forEach(sr -> {
                     System.out.println("--row ");
-                    sr.getProductSearchResultList().stream()
-                        .forEach(p -> {
-                                System.out.println("price " + p.getPrice() + " name " + p.getProductName());
-                            }
-                        );
+                    currentProductCombo.add(sr.getProductSearchResultList().get(0));
                 }
             );
 
-        return productSearchService.getProductsBySearchTerm(searchTerm);
+        productCombos.add(currentProductCombo);
+
+        return productCombos;
     }
 
 }
