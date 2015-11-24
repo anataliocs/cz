@@ -1,5 +1,6 @@
 package com.zappos.canatalio.web.rest;
 
+import com.zappos.canatalio.domain.SearchResults;
 import com.zappos.canatalio.security.AuthoritiesConstants;
 import com.zappos.canatalio.service.AuditEventService;
 import com.zappos.canatalio.service.ProductSearchService;
@@ -27,8 +28,8 @@ public class ProductSearchResource {
 
     @RequestMapping(value = "/products",
             method = RequestMethod.GET,
-            produces = MediaType.TEXT_PLAIN_VALUE)
-    public String findAll() {
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public SearchResults findAll() {
         return productSearchService.getProductsBySearchTerm("");
     }
 

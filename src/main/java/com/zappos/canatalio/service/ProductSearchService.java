@@ -1,7 +1,9 @@
 package com.zappos.canatalio.service;
 
+import com.zappos.canatalio.domain.SearchResults;
+
 public interface ProductSearchService {
 
-    public String getProductsBySearchTerm(String searchTerm);
+    public SearchResults getProductsBySearchTerm(String searchTerm);
 
 }
